@@ -8,15 +8,28 @@
 
 namespace app\modules\coder\controllers;
 
-//use Yii;
-//use yii\filters\AccessControl;
+use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use app\modules\coder\models\CodeForm;
 
 class ServiceController extends Controller
 {
     public function actionCreate()
     {
-        return $this->render('create');
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new CodeForm();
+        if ($model->load(Yii::$app->request->post()) && $model->saveCode()) {
+            return $this->render('show');
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+
     }
 
     public function actionShow()

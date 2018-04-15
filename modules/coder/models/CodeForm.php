@@ -1,29 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin Colt
- * Date: 15.04.2018
- * Time: 18:57
- */
+namespace app\modules\coder\models;
 
-class CodeForm
+use yii\base\Model;
+use \app\modules\coder\models\Algorithm;
+
+class CodeForm extends Model
 {
 
     public $algorithm;
 
-    public function saveCode()
-    {
-
-    }
-
-    public function validateCode()
-    {
-
-    }
-
     public function rules()
     {
+        return [
+            ['algorithm', 'required'],
+        ];
+    }
 
+    public function saveCode()
+    {
+        if ( $this->validate() && !$this->hasErrors()){
+            $code = new Algorithm();
+            $code->algorithm = $this->algorithm;
+            $code->save();
+            return true;
+        }
+        return false;
     }
 
 }

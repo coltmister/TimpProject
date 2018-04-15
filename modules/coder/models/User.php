@@ -6,7 +6,7 @@
  * Time: 18:56
  */
 
-class User extends DataBaseController
+class User extends \app\modules\coder\controllers\ServiceController
 {
     public static function FindByUsername()
     {

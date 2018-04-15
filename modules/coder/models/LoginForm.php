@@ -7,7 +7,7 @@
  */
 
 
-class LoginForm extends DataBaseController
+class LoginForm extends \app\modules\coder\controllers\ServiceController
 {
     public $username;
     public $password;
