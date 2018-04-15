@@ -6,10 +6,10 @@
  * Time: 18:57
  */
 
-class CodeForm extends DataBaseController
+class CodeForm
 {
 
-    public $ALGORITM;
+    public $algorithm;
 
     public function saveCode()
     {

@@ -12,6 +12,8 @@ class LoginForm extends DataBaseController
     public $username;
     public $password;
     public $rememberMe = true;
+
+
     public function validatePassword()
     {
 
