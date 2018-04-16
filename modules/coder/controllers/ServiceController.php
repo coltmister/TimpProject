@@ -8,6 +8,7 @@
 
 namespace app\modules\coder\controllers;
 
+use app\modules\coder\models\Algorithm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -23,7 +24,8 @@ class ServiceController extends Controller
 
         $model = new CodeForm();
         if ($model->load(Yii::$app->request->post()) && $model->saveCode()) {
-            return $this->render('show');
+            $codes = Algorithm::find()->all();
+            return $this->render('show', ['codes' => $codes]);
         }
 
         return $this->render('create', [
@@ -34,6 +36,7 @@ class ServiceController extends Controller
 
     public function actionShow()
     {
-        return $this->render('show');
+        $codes = Algorithm::find()->all();
+        return $this->render('show', ['codes' => $codes]);
     }
 }

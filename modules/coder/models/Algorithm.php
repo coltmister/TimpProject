@@ -16,10 +16,4 @@ class Algorithm extends ActiveRecord
     {
         return self::find()->where(['=', 'id', $id])->one();
     }
-
-    public static function newAlgorithm($algorithm)
-    {
-
-    }
-
 }
