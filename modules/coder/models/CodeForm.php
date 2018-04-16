@@ -20,7 +20,10 @@ class CodeForm extends Model
     {
         if ( $this->validate() && !$this->hasErrors()){
             $code = new Algorithm();
-            $code->algorithm = $this->algorithm;
+            $count = count(Algorithm::find()->all())+1;
+            $code->link = $count.'.html';
+            $fp = fopen('../modules/coder/src/'.$code->link, 'at');
+            fwrite($fp, $this->algorithm);
             $code->save();
             return true;
         }
