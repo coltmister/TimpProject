@@ -16,4 +16,9 @@ class Algorithm extends ActiveRecord
     {
         return self::find()->where(['=', 'id', $id])->one();
     }
+
+    public static function findNextNum( $type = null )
+    {
+        return self::find()->select(['MAX(`number`) AS `max`'])->where(['=', 'type', $type])->asArray()->one()['max'] + 1;
+    }
 }

@@ -24,6 +24,7 @@ class CodeForm extends Model
             $code->link = $count.'.html';
             $fp = fopen('../modules/coder/src/'.$code->link, 'at');
             fwrite($fp, $this->algorithm);
+            fclose($fp);
             $code->save();
             return true;
         }

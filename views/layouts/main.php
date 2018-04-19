@@ -39,8 +39,10 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Show', 'url' => ['/coder/service/show']],
-            ['label' => 'Create', 'url' => ['/coder/service/create']],
+            (!Yii::$app->user->isGuest)?(
+            ['label' => 'Show', 'url' => ['/coder/service/show']]):(''),
+            (!Yii::$app->user->isGuest)?(
+            ['label' => 'Create', 'url' => ['/coder/service/create']]):(''),
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

@@ -25,7 +25,7 @@ class ServiceController extends Controller
         $model = new CodeForm();
         if ($model->load(Yii::$app->request->post()) && $model->saveCode()) {
             $codes = Algorithm::find()->all();
-            return $this->render('show', ['codes' => $codes]);
+            return $this->redirect('show');
         }
 
         return $this->render('create', [
